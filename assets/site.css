@@ -112,9 +112,9 @@ img,svg{ max-width:100%; }
   position:sticky;
   top:0;
   z-index:60;
-  background:rgba(10,8,6,.74);
-  -webkit-backdrop-filter:blur(16px) saturate(140%);
-  backdrop-filter:blur(16px) saturate(140%);
+  /* fully opaque: page content must never show through the sticky bar */
+  background:#0A0806;
+  background:linear-gradient(180deg,#0C0A07 0%,#090705 100%);
   border-bottom:1px solid var(--line);
 }
 
@@ -560,9 +560,7 @@ img,svg{ max-width:100%; }
   gap:10px;
   padding:11px 15px;
   border-radius:14px;
-  background:rgba(24,19,15,.94);
-  -webkit-backdrop-filter:blur(10px);
-  backdrop-filter:blur(10px);
+  background:#14100C;
   border:1px solid var(--line-strong);
   box-shadow:var(--shadow-md);
   transform:rotate(2deg) translateY(calc(100% - 8px));
@@ -1755,7 +1753,7 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
     gap:3px;
     margin:0;
     padding:12px 20px 18px;
-    background:rgba(12,10,8,.98);
+    background:#0B0908;
     border-bottom:1px solid var(--line);
     box-shadow:0 30px 50px -40px #000;
     display:none;
