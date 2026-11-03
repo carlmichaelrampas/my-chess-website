@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#eef3fa" />
-<meta name="description" content="Sign in to Blue Knight to keep your name on the board. Free account, created in your browser." />
+<meta name="description" content="Sign in to Blue Knight to save chess lessons to your reading list. Free account, created in your browser." />
 <meta name="robots" content="noindex" />
 <title>Log in · Blue Knight</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232563eb'/%3E%3Ctext x='50' y='76' font-size='68' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
@@ -26,13 +26,15 @@
 
     <nav class="nav" id="siteNav" aria-label="Main">
       <a href="index.html">Home</a>
-      <a href="index.html#features">Features</a>
-      <a href="play.html">Play</a>
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
     </nav>
 
     <div class="header-actions">
       <span data-auth></span>
-      <a class="btn btn-primary btn-sm" href="play.html">Play now</a>
+      <a class="btn btn-primary btn-sm" href="basics.html">Start learning</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">&#9776;</button>
     </div>
   </div>
@@ -43,13 +45,13 @@
 
     <section class="auth-visual">
       <div>
-        <h2>Your board is waiting.</h2>
-        <p>Sign in so your name shows up on the board — or jump straight into a game, no account needed.</p>
+        <h2>Keep what you learn.</h2>
+        <p>Sign in to save lessons to your reading list, so the rules and openings you care about are always one click away.</p>
       </div>
 
       <ul class="auth-list">
-        <li>Keep your name and avatar in the header</li>
-        <li>Stay signed in on this device</li>
+        <li>Save any lesson to your reading list</li>
+        <li>Pick up where you left off, on this device</li>
         <li>Free forever — no email confirmations, no spam</li>
       </ul>
 
@@ -60,7 +62,7 @@
 
       <div class="signed-in-note" id="signedInNote">
         <span id="signedInText">You are signed in.</span>
-        <a href="play.html">Go to the board &rarr;</a>
+        <a href="index.html">Go to your lessons &rarr;</a>
       </div>
 
       <div class="auth-tabs" role="tablist" aria-label="Account access">
@@ -71,7 +73,7 @@
       <!-- ---------------- Sign in ---------------- -->
       <form id="panelSignin" role="tabpanel" aria-labelledby="tabSignin" novalidate>
         <h1 class="auth-title" tabindex="-1">Welcome back</h1>
-        <p class="auth-sub">Pick up where you left off.</p>
+        <p class="auth-sub">Welcome back — your reading list is waiting.</p>
 
         <div class="form-alert" id="signinAlert" role="alert"></div>
 
@@ -106,7 +108,7 @@
       <!-- ---------------- Sign up ---------------- -->
       <form id="panelSignup" role="tabpanel" aria-labelledby="tabSignup" novalidate hidden>
         <h1 class="auth-title" tabindex="-1">Create your account</h1>
-        <p class="auth-sub">It takes about ten seconds.</p>
+        <p class="auth-sub">Takes about ten seconds. No email confirmation.</p>
 
         <div class="form-alert" id="signupAlert" role="alert"></div>
 
@@ -155,11 +157,11 @@
 
       <div class="auth-divider">or</div>
 
-      <a class="guest-link" href="play.html">Continue as guest &rarr;</a>
+      <a class="guest-link" href="index.html">Keep reading without an account &rarr;</a>
 
       <p class="demo-note">
-        <strong>Demo login.</strong> Accounts are stored in this browser only (localStorage) —
-        no password is ever saved or sent to a server.
+        <strong>Demo login.</strong> Accounts and reading lists are stored in this browser only
+        (localStorage) — no password is ever saved or sent to a server.
       </p>
     </section>
 
@@ -178,8 +180,10 @@
 
     <nav class="footer-links" aria-label="Footer">
       <a href="index.html">Home</a>
-      <a href="play.html">Play</a>
-      <a href="index.html#features">Features</a>
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
     </nav>
 
     <p class="footer-copy">&copy; <span data-year>2026</span> Blue Knight &middot; Built with vanilla HTML, CSS &amp; JavaScript.</p>
@@ -206,7 +210,7 @@
 
   var params = new URLSearchParams(window.location.search);
   var next = params.get('next');
-  var target = (next && /^[a-z0-9._-]+\.html$/i.test(next)) ? next : 'play.html';
+  var target = (next && /^[a-z0-9._-]+\.html$/i.test(next)) ? next : 'index.html';
 
   /* ---------------- helpers ---------------- */
   function showTab(name) {
@@ -249,7 +253,7 @@
   }
 
   function finishSignIn(name) {
-    var welcome = 'Welcome' + (name ? ', ' + name : '') + '. Taking you to the board…';
+    var welcome = 'Welcome' + (name ? ', ' + name : '') + '. Taking you to your lessons…';
     document.dispatchEvent(new CustomEvent('bk:signin'));
     window.setTimeout(function () { window.location.href = target; }, 750);
     return welcome;

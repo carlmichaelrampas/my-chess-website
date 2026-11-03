@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#eef3fa" />
-<meta name="description" content="Blue Knight is a free, modern chessboard for the browser. Drag, drop and play with full legal move checking, checkmate and draw detection — on desktop and mobile." />
+<meta name="description" content="Blue Knight is a free, no-nonsense guide to chess: the board and rules, sound openings, tactical patterns and a short history of the game." />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Blue Knight · A cleaner way to play chess" />
-<meta property="og:description" content="A fast, distraction-free chessboard for the browser. Legal moves, checkmate and draws handled for you." />
-<title>Blue Knight · A cleaner way to play chess</title>
+<meta property="og:title" content="Blue Knight · A pocket guide to chess" />
+<meta property="og:description" content="Learn the rules, the openings and the tactics — short, clear lessons with a practice board when you want to try things out." />
+<title>Blue Knight · A pocket guide to chess</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232563eb'/%3E%3Ctext x='50' y='76' font-size='68' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
 <link rel="stylesheet" href="assets/site.css" />
 </head>
@@ -22,19 +22,21 @@
       <span class="brand-mark" aria-hidden="true">&#9822;</span>
       <span>
         <span class="brand-name">Blue Knight</span>
-        <span class="brand-sub">Chess for the browser</span>
+        <span class="brand-sub">A pocket guide to chess</span>
       </span>
     </a>
 
     <nav class="nav" id="siteNav" aria-label="Main">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How to play</a>
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
     </nav>
 
     <div class="header-actions">
       <span data-auth></span>
-      <a class="btn btn-primary btn-sm" href="play.html">Play now</a>
+      <a class="btn btn-primary btn-sm" href="basics.html">Start learning</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">&#9776;</button>
     </div>
   </div>
@@ -44,23 +46,23 @@
 
   <section class="hero wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Free &middot; No download</span>
-      <h1>A cleaner way to play <span class="grad">chess</span>.</h1>
+      <span class="eyebrow">Free &middot; No sign-up to read</span>
+      <h1>Learn chess, <span class="grad">one idea at a time</span>.</h1>
       <p class="lede">
-        Blue Knight is a fast, distraction-free chessboard that runs entirely in your browser.
-        Drag a piece, drop it, and keep playing — legal moves, check, checkmate and draws are
-        handled for you.
+        A short, clear guide to the game: how the pieces move, which first moves make sense,
+        the tactical patterns that win material, and how chess got from India to the world stage.
+        No hype, no paywall — just the useful parts.
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="play.html">Play now</a>
-        <a class="btn btn-ghost btn-lg" href="login.html">Create free account</a>
+        <a class="btn btn-primary btn-lg" href="basics.html">Start with the basics</a>
+        <a class="btn btn-ghost btn-lg" href="openings.html">Browse openings</a>
       </div>
 
       <ul class="hero-points">
-        <li>No sign-up needed to play</li>
-        <li>Works on phone and desktop</li>
-        <li>100% legal move checking</li>
+        <li>Four lessons, plain language</li>
+        <li>Real notation, explained</li>
+        <li>Save lessons to a reading list</li>
         <li>Free, no ads, no trackers</li>
       </ul>
     </div>
@@ -82,78 +84,104 @@
         <span class="mock-piece w" style="left:75%;top:87.5%">&#9818;</span>
       </div>
       <div class="mock-card">
-        <span class="mock-badge">#</span>
+        <span class="mock-badge" aria-hidden="true">&#9822;</span>
         <span class="mock-card-text">
-          <strong>Checkmate detected</strong>
-          <span>White wins &middot; 1-0</span>
+          <strong>Piece values</strong>
+          <span>pawn 1 &middot; knight 3 &middot; bishop 3 &middot; rook 5 &middot; queen 9</span>
         </span>
       </div>
     </div>
   </section>
 
-  <section class="section wrap" id="features">
+  <section class="section wrap" id="lessons">
     <div class="section-head">
-      <h2>Everything you need, nothing you don't</h2>
-      <p>No accounts to create, no engine to download, no pop-ups. Just a board, your pieces, and the rules of chess.</p>
+      <h2>Start here</h2>
+      <p>Work through them in order, or jump to whatever you need. Each one takes less than ten minutes.</p>
     </div>
 
     <div class="cards">
-      <article class="card" data-reveal>
-        <div class="card-icon" aria-hidden="true">&#9819;</div>
-        <h3>Real chess rules</h3>
-        <p>Castling, en passant, pawn promotion and pinned pieces are all handled — only legal moves are allowed.</p>
-      </article>
-      <article class="card" data-reveal>
-        <div class="card-icon" aria-hidden="true">&#9995;</div>
-        <h3>Drag or tap</h3>
-        <p>Play with a mouse, trackpad, pen or touch screen. Drag a piece, or tap it and then tap a highlighted square.</p>
-      </article>
-      <article class="card" data-reveal>
-        <div class="card-icon" aria-hidden="true">&#9876;</div>
-        <h3>Clear feedback</h3>
-        <p>Legal move dots, capture rings, last-move highlight and a red glow on a king in check. No guessing.</p>
-      </article>
-      <article class="card" data-reveal>
-        <div class="card-icon" aria-hidden="true">&#128274;</div>
-        <h3>Private by default</h3>
-        <p>Everything runs locally in your browser. Your games are never uploaded, and nothing is tracked.</p>
-      </article>
+      <a class="lesson-card" href="basics.html" data-reveal>
+        <span class="lesson-meta">Lesson 1 &middot; 7 min</span>
+        <h3>Chess basics</h3>
+        <p>The board, how every piece moves, castling, en passant, promotion and how a game ends.</p>
+        <span class="go">Read the basics &rarr;</span>
+      </a>
+      <a class="lesson-card" href="openings.html" data-reveal>
+        <span class="lesson-meta">Lesson 2 &middot; 9 min</span>
+        <h3>Openings</h3>
+        <p>What to do in the first ten moves, plus six openings worth knowing and why they work.</p>
+        <span class="go">Study openings &rarr;</span>
+      </a>
+      <a class="lesson-card" href="tactics.html" data-reveal>
+        <span class="lesson-meta">Lesson 3 &middot; 8 min</span>
+        <h3>Tactics</h3>
+        <p>Forks, pins, skewers and back-rank mates — the patterns that decide most games.</p>
+        <span class="go">Learn the patterns &rarr;</span>
+      </a>
+      <a class="lesson-card" href="history.html" data-reveal>
+        <span class="lesson-meta">Lesson 4 &middot; 6 min</span>
+        <h3>History</h3>
+        <p>From chaturanga in India to Gukesh — 1,500 years in one short read.</p>
+        <span class="go">Read the history &rarr;</span>
+      </a>
     </div>
+  </section>
+
+  <section class="section wrap" id="numbers">
+    <div class="section-head">
+      <h2>Chess in numbers</h2>
+      <p>A few facts that make the game feel as big as it is.</p>
+    </div>
+    <div class="fact-strip">
+      <div class="fact"><strong>64</strong><span>squares on the board</span></div>
+      <div class="fact"><strong>32</strong><span>pieces at the start</span></div>
+      <div class="fact"><strong>6</strong><span>types of piece</span></div>
+      <div class="fact"><strong>10<sup>120</sup></strong><span>possible games (Shannon number)</span></div>
+    </div>
+  </section>
+
+  <section class="section wrap reading-list" data-reading-list hidden>
+    <div class="section-head">
+      <h2>Your reading list</h2>
+      <p data-welcome hidden></p>
+      <p>Saved lessons, stored in this browser for your account.</p>
+    </div>
+    <div class="cards" data-reading-cards></div>
   </section>
 
   <section class="section wrap" id="how">
     <div class="section-head">
-      <h2>How to play</h2>
-      <p>Two players, one screen. White always moves first.</p>
+      <h2>How to use this guide</h2>
+      <p>Reading chess is easy; remembering it takes a little structure.</p>
     </div>
 
     <div class="steps">
       <article class="step" data-reveal>
         <span class="step-num">1</span>
-        <h3>Open the board</h3>
-        <p>Head to the <a href="play.html">play page</a>. No account is required — sign in only if you want your name in the header.</p>
+        <h3>Read one lesson</h3>
+        <p>Start with the <a href="basics.html">basics</a>. Everything else assumes you know how the pieces move.</p>
       </article>
       <article class="step" data-reveal>
         <span class="step-num">2</span>
-        <h3>Move a piece</h3>
-        <p>Drag it to a square, or tap it and tap a highlighted square. The dots show where it can legally go.</p>
+        <h3>Save what matters</h3>
+        <p>Create a free account to keep a reading list on this device, then come back to a lesson whenever you need it.</p>
       </article>
       <article class="step" data-reveal>
         <span class="step-num">3</span>
-        <h3>Finish the game</h3>
-        <p>Checkmate, stalemate and draws are detected automatically. Use <em>Undo</em> or <em>New game</em> whenever you like.</p>
+        <h3>Try it on the board</h3>
+        <p>Open the <a href="play.html">practice board</a> and play a few moves — the legal-move hints do the checking for you.</p>
       </article>
     </div>
   </section>
 
   <section class="cta-band" data-reveal>
     <div>
-      <h2>Ready to play?</h2>
-      <p>The board is one click away — no download, no sign-up.</p>
+      <h2>Ready to put it into practice?</h2>
+      <p>A full board is one click away — no account required.</p>
     </div>
     <div class="cta-actions">
-      <a class="btn btn-invert btn-lg" href="play.html">Play now</a>
-      <a class="btn btn-ghost btn-lg" href="login.html" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff">Sign in</a>
+      <a class="btn btn-invert btn-lg" href="play.html">Open the practice board</a>
+      <a class="btn btn-ghost btn-lg" href="login.html" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff">Create an account</a>
     </div>
   </section>
 
@@ -165,15 +193,17 @@
       <span class="brand-mark small" aria-hidden="true">&#9822;</span>
       <div>
         <strong>Blue Knight</strong>
-        <span>A free, minimal chessboard for the browser.</span>
+        <span>A pocket guide to chess, free for everyone.</span>
       </div>
     </div>
 
     <nav class="footer-links" aria-label="Footer">
-      <a href="play.html">Play</a>
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
+      <a href="play.html">Practice board</a>
       <a href="login.html">Account</a>
-      <a href="index.html#features">Features</a>
-      <a href="index.html#how">How to play</a>
     </nav>
 
     <p class="footer-copy">&copy; <span data-year>2026</span> Blue Knight &middot; Built with vanilla HTML, CSS &amp; JavaScript.</p>

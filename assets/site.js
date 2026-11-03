@@ -116,6 +116,42 @@
     return Auth._memory || originalGetUser();
   };
 
+  var LESSONS = {
+    basics:   { title: 'Chess basics',  href: 'basics.html',   blurb: 'The board, the pieces, and how a game is won.', minutes: 7 },
+    openings: { title: 'Openings',      href: 'openings.html', blurb: 'Sound first moves and the ideas behind them.',   minutes: 9 },
+    tactics:  { title: 'Tactics',       href: 'tactics.html',  blurb: 'Forks, pins, skewers and mating patterns.',      minutes: 8 },
+    history:  { title: 'History',       href: 'history.html',  blurb: 'From chaturanga to the modern world title.',     minutes: 6 }
+  };
+
+  var BOOKMARKS_KEY = 'blueknight.bookmarks';
+
+  function bookmarkMap() {
+    return readJSON(area('localStorage'), BOOKMARKS_KEY) || {};
+  }
+
+  Auth.lessonMeta = function (slug) { return LESSONS[slug] || null; };
+
+  Auth.getBookmarks = function () {
+    var user = Auth.getUser();
+    if (!user) return [];
+    var map = bookmarkMap();
+    return (map[normaliseEmail(user.email)] || []).slice();
+  };
+
+  Auth.toggleBookmark = function (slug) {
+    var user = Auth.getUser();
+    if (!user) return [];
+    var map = bookmarkMap();
+    var key = normaliseEmail(user.email);
+    var list = map[key] || [];
+    var index = list.indexOf(slug);
+    if (index >= 0) list.splice(index, 1);
+    else list.push(slug);
+    map[key] = list;
+    writeJSON(area('localStorage'), BOOKMARKS_KEY, map);
+    return list.slice();
+  };
+
   window.BKAuth = Auth;
 
   /* ------------------------------------------------------------------
@@ -229,6 +265,88 @@
     });
   }
 
+  function renderReadingList() {
+    var section = document.querySelector('[data-reading-list]');
+    if (!section) return;
+
+    var cards = section.querySelector('[data-reading-cards]');
+    var user = Auth.getUser();
+    var saved = user ? Auth.getBookmarks() : [];
+    var items = saved.map(function (slug) { return LESSONS[slug]; }).filter(Boolean);
+
+    if (!user || !items.length) {
+      section.hidden = true;
+      if (cards) cards.innerHTML = '';
+      return;
+    }
+
+    if (cards) {
+      cards.innerHTML = items.map(function (lesson) {
+        return '<a class="lesson-card" href="' + lesson.href + '">' +
+          '<span class="lesson-meta">Saved &middot; ' + lesson.minutes + ' min</span>' +
+          '<h3>' + escapeHtml(lesson.title) + '</h3>' +
+          '<p>' + escapeHtml(lesson.blurb) + '</p>' +
+          '<span class="go">Continue reading &rarr;</span>' +
+        '</a>';
+      }).join('');
+    }
+
+    section.hidden = false;
+  }
+
+  function initSaveButtons() {
+    var buttons = document.querySelectorAll('[data-save]');
+    if (!buttons.length) return;
+
+    var page = window.location.pathname.split('/').pop() || 'index.html';
+
+    function paint() {
+      var user = Auth.getUser();
+      var saved = user ? Auth.getBookmarks() : [];
+
+      Array.prototype.forEach.call(buttons, function (button) {
+        var slug = button.getAttribute('data-save');
+        var isSaved = saved.indexOf(slug) !== -1;
+
+        button.classList.toggle('saved', isSaved);
+        button.setAttribute('aria-pressed', isSaved ? 'true' : 'false');
+        button.textContent = !user
+          ? 'Sign in to save this lesson'
+          : (isSaved ? '\u2713 Saved to your reading list' : 'Save to reading list');
+      });
+    }
+
+    Array.prototype.forEach.call(buttons, function (button) {
+      button.addEventListener('click', function () {
+        if (!Auth.getUser()) {
+          window.location.href = 'login.html?next=' + encodeURIComponent(page);
+          return;
+        }
+        Auth.toggleBookmark(button.getAttribute('data-save'));
+        paint();
+        renderReadingList();
+      });
+    });
+
+    paint();
+  }
+
+  function renderWelcome() {
+    var slots = document.querySelectorAll('[data-welcome]');
+    if (!slots.length) return;
+
+    var user = Auth.getUser();
+    Array.prototype.forEach.call(slots, function (slot) {
+      if (user) {
+        slot.textContent = 'Welcome back, ' + (user.name || user.email) + '.';
+        slot.hidden = false;
+      } else {
+        slot.textContent = '';
+        slot.hidden = true;
+      }
+    });
+  }
+
   function initYear() {
     var slots = document.querySelectorAll('[data-year]');
     var year = String(new Date().getFullYear());
@@ -240,6 +358,9 @@
     initNav();
     initReveal();
     initYear();
+    initSaveButtons();
+    renderReadingList();
+    renderWelcome();
   }
 
   if (document.readyState === 'loading') {
@@ -248,5 +369,21 @@
     boot();
   }
 
-  document.addEventListener('bk:signin', renderAuthAreas);
+  document.addEventListener('bk:signin', function () {
+    renderAuthAreas();
+    initSaveButtons();
+    renderReadingList();
+    renderWelcome();
+  });
+
+  document.addEventListener('bk:signout', function () {
+    var buttons = document.querySelectorAll('[data-save]');
+    Array.prototype.forEach.call(buttons, function (button) {
+      button.classList.remove('saved');
+      button.setAttribute('aria-pressed', 'false');
+      button.textContent = 'Sign in to save this lesson';
+    });
+    renderReadingList();
+    renderWelcome();
+  });
 })();

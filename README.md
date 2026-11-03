@@ -1,66 +1,61 @@
-# Blue Knight — Chess Website
+# Blue Knight — a pocket guide to chess
 
-A modern, responsive chess site built with plain HTML, CSS and JavaScript — no build step,
-no dependencies, no CDN. Drop it on GitHub Pages (or any static host) and it just works.
+A small, free chess **reference and learning site** built with plain HTML, CSS and JavaScript.
+No build step, no dependencies, no CDN — deploy it to GitHub Pages as-is.
+
+The site is about chess knowledge: how the game works, how to start a game, the tactical
+patterns that decide games, and where the game came from. A practice board is included as an
+optional extra, not the main feature.
 
 ## Pages
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Landing page — hero, features, how-to-play, calls to action |
-| `login.html` | Sign in / create account (browser-only demo, see below) |
-| `play.html` | The chess game — fully self-contained (CSS + engine embedded) |
-| `assets/site.css` | Shared styles for the landing and login pages |
-| `assets/site.js` | Shared script: account chip, mobile nav, scroll reveal |
+| `index.html` | Home — what the guide covers, lesson cards, chess in numbers, reading list |
+| `basics.html` | Lesson 1 — board, pieces, castling, en passant, promotion, check/mate/draws, piece values |
+| `openings.html` | Lesson 2 — opening principles, eight rules, six openings with real move lines |
+| `tactics.html` | Lesson 3 — forks, pins, skewers, discovered/double check, back-rank mate, quiz |
+| `history.html` | Lesson 4 — origins, modern rules, timeline, all 18 world champions |
+| `login.html` | Member sign-in / sign-up (browser-only demo) |
+| `play.html` | Optional practice board — the full chess game |
+| `assets/site.css` | Shared design system for the whole site |
+| `assets/site.js` | Account chip, mobile nav, reading list, save buttons, scroll reveal |
 
-The game in `play.html` has no external dependencies; you can copy that single file
-somewhere else and it still runs.
+## Reading list (what the login is for)
 
-## Game features
+Signing up gives you a small member area, stored entirely in the browser:
 
-- **Blue & white minimal interface** — centered, high-contrast board for desktop and mobile.
-- **Drag and drop or tap-to-move** — pointer events cover mouse, trackpad, pen and touch.
-- **Full legal move rules** — pins, castling, en passant, pawn promotion (with picker),
-  and check evasion, enforced by a self-contained engine.
-- **Game state detection** — check, checkmate, stalemate, fifty-move rule, threefold
-  repetition, and insufficient material (dead position) draws.
-- **Live status + move history** — active-turn indicator, captured pieces, material
-  advantage, and SAN move list (`O-O`, `exd6`, `Qxf7#`).
-- **Controls** — new game, undo, flip board, sound on/off. `Esc` clears a selection.
+- **Save to reading list** on any lesson; saved lessons appear on the home page.
+- Accounts are kept in `localStorage`; the session goes to `sessionStorage`, or to
+  `localStorage` when "Keep me signed in" is checked.
+- **No password is ever stored or sent anywhere.** Sign-in checks that a local account
+  exists for the email, nothing more.
 
-## About the login (important)
-
-This is a **static site**, so the login is a front-end demo:
-
-- Accounts are saved in the browser's `localStorage`; the session lives in
-  `sessionStorage` (or `localStorage` when "Keep me signed in" is checked).
-- **No password is ever stored or sent anywhere.**
-- Signing in is therefore cosmetic — it personalises the header and nothing else.
-- It is **not** a security boundary: anyone can open `play.html` directly, and the game
-  never requires an account.
-
-If you need real accounts, saved games or online play, you need a backend or a BaaS
-(Firebase Auth, Supabase, Auth0…). That can be added without touching the chess engine.
+This is a front-end demo, not real authentication: it personalises the site, and it is not
+a security boundary. Real accounts, synced reading lists or cloud-saved games need a
+backend or a BaaS such as Firebase or Supabase.
 
 ## Deploy to GitHub Pages
 
 1. Push this repository to GitHub.
 2. **Settings → Pages → Deploy from a branch**, pick your branch and `/ (root)`.
-3. Visit `https://<username>.github.io/<repo>/` — the landing page loads first.
+3. Visit `https://<username>.github.io/<repo>/`.
+
+`play.html` is still fully self-contained — its styles and chess engine live inside that one
+file, so it can be copied out standalone if you only want the game.
 
 ## Verified
 
-- Move generation checked against standard *perft* counts (start position, Kiwipete,
-  and castling / en-passant / promotion-heavy positions).
-- SAN replay of the Ruy Lopez main line, plus promotion, en-passant and disambiguation cases.
-- Browser-behaviour tests (jsdom) for the board, undo, promotion dialog, and the
-  login / session flows.
+- Chess engine checked against standard *perft* counts (start position, Kiwipete, and
+  castling / en-passant / promotion-heavy positions) plus SAN replay of the Ruy Lopez.
+- Browser-behaviour tests (jsdom) for the board, undo, promotion dialog, login/session
+  flows, lesson bookmarks and the home-page reading list.
+- Internal links and HTML structure checked across all seven pages.
 
-## Ideas for next steps
+## Possible next steps
 
-- Real authentication + saved games (Firebase or Supabase).
-- PGN export/import and shareable FEN links.
-- Play vs. computer (Stockfish WASM) or online PvP.
-- Dark mode and alternate piece sets.
-- Installable PWA with offline caching.
-- Daily puzzles and a profile page with stats.
+- Real authentication with Firebase or Supabase, and synced reading lists.
+- A searchable opening database with diagrams for each line.
+- Interactive board diagrams inside the lessons (click through the moves).
+- A glossary of chess terms and a "chess clock" explainer.
+- Dark mode, i18n (English/Tagalog), and a PWA install.
