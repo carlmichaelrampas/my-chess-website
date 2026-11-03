@@ -1,4 +1,4 @@
-# Blue Knight — a pocket guide to chess
+# Blue Knight — a pocket guide to chess 
 
 A small, free chess **reference and learning site** built with plain HTML, CSS and JavaScript.
 No build step, no dependencies, no CDN — deploy it to GitHub Pages as-is.
