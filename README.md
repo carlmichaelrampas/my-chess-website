@@ -3,6 +3,10 @@
 A small, free chess **reference and learning site** built with plain HTML, CSS and JavaScript.
 No build step, no dependencies, no CDN — deploy it to GitHub Pages as-is.
 
+The look is a dark editorial theme: warm near-black, cream type, brass accents, a floating
+board and a serif display face — inspired by premium chess landing pages — and it carries
+through to the practice board.
+
 The site is about chess knowledge: how the game works, how to start a game, the tactical
 patterns that decide games, and where the game came from. A practice board is included as an
 optional extra, not the main feature.

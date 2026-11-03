@@ -251,10 +251,15 @@
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('in');
+        observer.unobserve(el);
+        /* drop the reveal classes afterwards so component hovers work again */
+        window.setTimeout(function () {
+          el.classList.remove('reveal', 'in');
+          el.style.transitionDelay = '';
+        }, 850);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 

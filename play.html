@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#eef3fa" />
+<meta name="theme-color" content="#0A0806" />
 <meta name="description" content="The Blue Knight practice board — play chess locally with drag and drop, legal move checks, checkmate, stalemate and draw detection." />
 <title>Practice board · Blue Knight</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232563eb'/%3E%3Ctext x='50' y='76' font-size='68' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
@@ -757,6 +757,201 @@
   @media (prefers-reduced-motion:reduce){
     *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
   }
+
+  /* ============================================================
+     Dark theme — keeps the board readable, matches the guide
+     ============================================================ */
+  :root{
+    color-scheme:dark;
+    --bg:#0A0806;
+    --surface:#16120F;
+    --ink:#F4EBDD;
+    --ink-soft:#D6C9B7;
+    --muted:#9C8E7C;
+    --line:rgba(240,226,204,.12);
+    --blue:#D9A85C;
+    --blue-strong:#C08F3E;
+    --blue-deep:#F0D6A6;
+    --blue-soft:rgba(217,168,92,.15);
+    --sq-light:#EADFCB;
+    --sq-dark:#6B5540;
+    --sel:rgba(217,168,92,.45);
+    --last:rgba(217,168,92,.28);
+    --danger:#E07162;
+    --shadow-panel:0 28px 60px -46px #000;
+    --shadow-board:0 50px 90px -50px #000;
+  }
+
+  body{
+    background:
+      radial-gradient(900px 600px at 82% -10%, rgba(140,58,32,.28), rgba(140,58,32,0) 62%),
+      radial-gradient(800px 520px at 2% 4%, rgba(217,168,92,.10), rgba(217,168,92,0) 60%),
+      #0A0806;
+    background-attachment:fixed;
+  }
+
+  .brand-mark{
+    color:#F0D6A6;
+    background:linear-gradient(160deg, rgba(217,168,92,.22), rgba(124,43,30,.34));
+    border:1px solid rgba(240,214,166,.3);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12), 0 12px 26px -18px #000;
+  }
+  .brand-title{ font-family:var(--font-display); font-weight:600; color:#F2E5CF; }
+
+  .top-link,
+  .auth-link{
+    color:var(--ink-soft);
+    background:rgba(240,226,204,.04);
+    border-color:rgba(240,226,204,.12);
+  }
+  .top-link:hover,
+  .auth-link:hover{ background:rgba(240,226,204,.09); color:#F2E5CF; }
+
+  .auth-chip{
+    background:rgba(240,226,204,.05);
+    border-color:rgba(240,226,204,.12);
+    box-shadow:none;
+  }
+  .auth-avatar{
+    color:#1A130E;
+    background:linear-gradient(150deg,#F0D6A6,#C08F3E);
+  }
+  .auth-name{ color:#F2E5CF; }
+  .auth-logout{ background:rgba(240,226,204,.08); color:var(--ink-soft); }
+  .auth-logout:hover{ background:rgba(240,226,204,.16); color:#F2E5CF; }
+
+  .board{
+    background:#20180F;
+    box-shadow:
+      0 0 0 1px rgba(240,214,166,.18),
+      0 0 0 7px rgba(240,226,204,.04),
+      var(--shadow-board);
+  }
+
+  .sq.light .coord{ color:#5A4634; }
+  .sq.dark .coord{ color:#F2E5CF; }
+
+  .piece.w{
+    color:#FBF3E6;
+    -webkit-text-stroke:calc(var(--sq) * .028) #3A291B;
+    text-shadow:0 2px 4px rgba(0,0,0,.45);
+  }
+  .piece.b{
+    color:#8E2B1D;
+    -webkit-text-stroke:calc(var(--sq) * .006) rgba(0,0,0,.35);
+    text-shadow:0 2px 4px rgba(0,0,0,.45);
+  }
+
+  .hint.dot .mark{ background:rgba(45,30,18,.42); box-shadow:0 1px 2px rgba(0,0,0,.25); }
+  .hint.ring .mark{ border-color:rgba(45,30,18,.4); }
+
+  .board-overlay{ background:rgba(8,5,3,.58); }
+  .promo{ background:rgba(8,5,3,.58); }
+  .result-card,
+  .promo-card{
+    background:linear-gradient(165deg,#221B15,#150F0C);
+    border:1px solid rgba(240,226,204,.14);
+    color:var(--ink);
+    box-shadow:0 40px 80px -40px #000;
+  }
+  .result-title,
+  .promo-title{ color:#F2E5CF; }
+  .result-title{ font-family:var(--font-display); font-weight:600; }
+  .result-kicker{ color:rgba(240,226,204,.42); }
+  .result-detail{ color:var(--muted); }
+
+  .promo-btn{
+    background:rgba(240,226,204,.05);
+    border-color:rgba(240,226,204,.14);
+    color:#8E2B1D;
+  }
+  .promo-btn:hover{ background:rgba(240,226,204,.1); border-color:rgba(240,214,166,.4); }
+  .promo-btn.white-piece{ color:#FBF3E6; -webkit-text-stroke:1.5px #3A291B; }
+  .promo-cancel{ color:var(--muted); }
+  .promo-cancel:hover{ color:#F2E5CF; background:rgba(240,226,204,.08); }
+
+  .player{
+    background:rgba(240,226,204,.04);
+    border-color:rgba(240,226,204,.1);
+  }
+  .player.active{
+    background:rgba(240,226,204,.07);
+    border-color:rgba(240,214,166,.4);
+    box-shadow:0 18px 34px -30px #000;
+  }
+  .player-avatar{
+    background:rgba(240,226,204,.07);
+    color:var(--ink);
+  }
+  .player.active .player-avatar{
+    background:linear-gradient(150deg,#F0D6A6,#C08F3E);
+    color:#1A130E;
+  }
+  .player-name{ color:#F2E5CF; }
+  .player-captured{ color:rgba(240,226,204,.45); }
+  .player-captured .cap.b{ color:#B4462F; }
+  .player-captured .cap.w{ color:#F7EFE2; -webkit-text-stroke:1px #4A3626; }
+  .player-adv{ color:#8FCBA4; }
+
+  .turn-pill{ background:rgba(240,226,204,.07); color:rgba(240,226,204,.45); }
+  .player.active .turn-pill{ color:#F0D6A6; background:rgba(217,168,92,.16); }
+
+  .card{
+    background:linear-gradient(165deg, rgba(32,26,21,.9), rgba(16,13,10,.96));
+    border-color:rgba(240,226,204,.12);
+  }
+
+  .turn-dot{
+    background:linear-gradient(160deg,#F0D6A6,#C08F3E);
+    box-shadow:0 0 0 4px rgba(217,168,92,.16);
+    animation:pulseWarm 2.2s ease-in-out infinite;
+  }
+  .turn-dot.black{
+    background:linear-gradient(160deg,#B4462F,#6E1F14);
+    box-shadow:0 0 0 4px rgba(180,70,47,.16);
+  }
+
+  @keyframes pulseWarm{
+    0%,100%{ box-shadow:0 0 0 4px rgba(217,168,92,.16); }
+    50%{ box-shadow:0 0 0 8px rgba(217,168,92,.05); }
+  }
+
+  .status-detail,
+  .empty{ color:var(--muted); }
+
+  .check-pill{
+    color:#F2C3B9;
+    background:rgba(163,58,39,.22);
+    border-color:rgba(224,113,98,.4);
+  }
+
+  .btn.primary{
+    color:#1A130E;
+    background:linear-gradient(180deg,#F7EAD6,#DCC09B);
+    box-shadow:0 18px 34px -26px rgba(240,214,166,.9), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  .btn.primary:hover{ background:linear-gradient(180deg,#FFF6E6,#E6CDA7); }
+
+  .btn.ghost{
+    background:rgba(240,226,204,.04);
+    color:#F2E5CF;
+    border-color:rgba(240,226,204,.14);
+  }
+  .btn.ghost:hover{ background:rgba(240,226,204,.1); border-color:rgba(240,214,166,.4); }
+
+  .card-head h2{ color:rgba(240,226,204,.5); }
+  .badge{ background:rgba(240,226,204,.06); color:var(--muted); }
+
+  .move-row:nth-child(odd){ background:rgba(240,226,204,.035); }
+  .move-row .num{ color:rgba(240,226,204,.3); }
+  .move-row .san{ color:var(--ink-soft); }
+  .move-row .san.last{ background:rgba(217,168,92,.16); color:#F0D6A6; }
+
+  .history{ scrollbar-color:rgba(240,226,204,.2) transparent; }
+  .history::-webkit-scrollbar-thumb{ background:rgba(240,226,204,.16); }
+  .history::-webkit-scrollbar-track{ background:transparent; }
+
+  .footer{ color:rgba(240,226,204,.28); }
 </style>
 </head>
 <body>
