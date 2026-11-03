@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0806" />
+<meta name="description" content="Learn how the chessboard works and how every piece moves, including castling, en passant, promotion, check, checkmate and draws." />
+<title>Chess basics · Blue Knight</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232563eb'/%3E%3Ctext x='50' y='76' font-size='68' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body class="site">
+
+<a class="skip-link" href="#lesson">Skip to lesson</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">&#9822;</span>
+      <span>
+        <span class="brand-name">Blue Knight</span>
+        <span class="brand-sub">A pocket guide to chess</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="siteNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="basics.html" aria-current="page">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
+    </nav>
+
+    <div class="header-actions">
+      <span data-auth></span>
+      <a class="btn btn-primary btn-sm" href="openings.html">Next lesson</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main class="lesson-main wrap" id="lesson">
+  <div class="lesson-layout">
+
+    <aside class="lesson-nav" aria-label="Lessons">
+      <p class="lesson-nav-title">Lessons</p>
+      <a href="basics.html" aria-current="page">Chess basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
+      <a class="nav-practice" href="play.html">Practice board &rarr;</a>
+    </aside>
+
+    <article class="lesson">
+      <p class="lesson-kicker">Lesson 1 &middot; 7 min read</p>
+      <h1>The board, the pieces and the rules</h1>
+      <p class="lesson-lead">
+        Everything in chess grows out of a handful of rules. Learn these once and you can read
+        any game — or play one — without guessing.
+      </p>
+
+      <div class="lesson-actions">
+        <button class="save-btn" type="button" data-save="basics">Save to reading list</button>
+      </div>
+
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#board">The board</a></li>
+          <li><a href="#pieces">The pieces</a></li>
+          <li><a href="#special">Three special moves</a></li>
+          <li><a href="#ending">How a game ends</a></li>
+          <li><a href="#values">Piece values</a></li>
+        </ol>
+      </nav>
+
+      <div class="prose">
+        <h2 id="board">The board</h2>
+        <p>
+          Chess is played on an <strong>8&times;8 board of 64 squares</strong>, alternating light and dark.
+          The eight vertical columns are called <strong>files</strong> and are lettered <span class="sq-ref">a</span>
+          to <span class="sq-ref">h</span> from White's left to right. The eight horizontal rows are
+          <strong>ranks</strong>, numbered <span class="sq-ref">1</span> to <span class="sq-ref">8</span> from White's side.
+          Every square has a name: the bottom-left corner from White's view is
+          <span class="sq-ref">a1</span>, and the square four files and four ranks in is <span class="sq-ref">e4</span>.
+        </p>
+        <p>
+          Set the board so that <strong>each player has a light square on their right</strong>. White's pieces
+          start on ranks 1 and 2, Black's on ranks 7 and 8. The queens begin on their own colour:
+          the white queen on <span class="sq-ref">d1</span> (light), the black queen on
+          <span class="sq-ref">d8</span> (dark).
+        </p>
+        <p><strong>White always moves first</strong>, and players then take turns — one move each, no passing.</p>
+
+        <h2 id="pieces">The pieces</h2>
+        <div class="piece-grid">
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9822;</span>
+            <strong>King</strong>
+            <span>One square in any direction</span>
+          </div>
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9819;</span>
+            <strong>Queen</strong>
+            <span>Any distance: file, rank or diagonal</span>
+          </div>
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9820;</span>
+            <strong>Rook</strong>
+            <span>Any distance: file or rank</span>
+          </div>
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9821;</span>
+            <strong>Bishop</strong>
+            <span>Any distance, diagonally</span>
+          </div>
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9822;</span>
+            <strong>Knight</strong>
+            <span>In an L: two squares then one</span>
+          </div>
+          <div class="piece-card">
+            <span class="glyph" aria-hidden="true">&#9823;</span>
+            <strong>Pawn</strong>
+            <span>One forward, captures diagonally</span>
+          </div>
+        </div>
+
+        <h3>How each piece moves</h3>
+        <ul>
+          <li><strong>King</strong> — one square in any direction. The king may never move onto a square attacked by an enemy piece.</li>
+          <li><strong>Queen</strong> — any number of empty squares along a file, rank or diagonal. The most powerful piece.</li>
+          <li><strong>Rook</strong> — any number of empty squares along its file or rank. Very strong on open files.</li>
+          <li><strong>Bishop</strong> — any number of empty squares diagonally. A bishop stays on the colour it started on for the whole game.</li>
+          <li><strong>Knight</strong> — an L-shape: two squares in one direction and one square sideways. It is the only piece that <em>jumps</em> over others.</li>
+          <li><strong>Pawn</strong> — one square forward, or two from its starting square. Pawns capture one square <em>diagonally</em> forward, never straight ahead.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>No two pieces on one square</strong>
+          A piece captures by moving onto an enemy piece's square, removing it from the board.
+          You can never capture your own pieces, and you cannot jump over pieces — except with the knight.
+        </div>
+
+        <h2 id="special">Three special moves</h2>
+
+        <h3>1. Castling</h3>
+        <p>
+          Once per game, the king and a rook can move together. The king slides two squares toward the rook
+          and the rook jumps to the square on the king's other side. Kingside castling is written
+          <span class="sq-ref">O-O</span> (king to <span class="sq-ref">g1</span>), queenside is
+          <span class="sq-ref">O-O-O</span> (king to <span class="sq-ref">c1</span>).
+        </p>
+        <p>Castling is only legal when:</p>
+        <ul>
+          <li>neither the king nor that rook has moved yet;</li>
+          <li>every square between them is empty;</li>
+          <li>the king is not in check, and does not pass through or land on an attacked square.</li>
+        </ul>
+
+        <h3>2. En passant</h3>
+        <p>
+          If an enemy pawn moves two squares and lands directly beside your pawn, you may capture it
+          <em>as if</em> it had only moved one square — your pawn moves diagonally forward and the enemy pawn
+          is removed. This is only allowed on your <strong>very next move</strong>; after that the chance is gone.
+        </p>
+
+        <h3>3. Promotion</h3>
+        <p>
+          A pawn that reaches the far rank is promoted: it becomes a queen, rook, bishop or knight of its own
+          colour. Most promotions are to a queen, but a knight can occasionally be stronger. You can have
+          more than one queen.
+        </p>
+
+        <h2 id="ending">How a game ends</h2>
+        <ul>
+          <li><strong>Check</strong> — the king is attacked. You must answer it: move the king, block the attack, or capture the attacking piece.</li>
+          <li><strong>Checkmate</strong> — the king is in check and there is no legal way out. The game ends immediately; the side delivering mate wins.</li>
+          <li><strong>Resignation</strong> — a player may give up at any time.</li>
+          <li><strong>Stalemate</strong> — the player to move is <em>not</em> in check but has no legal move. That is a draw.</li>
+        </ul>
+        <p>There are also several ways to draw a game:</p>
+        <ul>
+          <li><strong>Agreement</strong> — both players accept a draw.</li>
+          <li><strong>Fifty-move rule</strong> — 50 moves each with no capture and no pawn move.</li>
+          <li><strong>Threefold repetition</strong> — the same position occurs three times.</li>
+          <li><strong>Insufficient material</strong> — neither side has enough material to mate, such as king and bishop alone against a bare king.</li>
+        </ul>
+
+        <div class="callout warn">
+          <strong>Checkmate ends the game — you do not capture the king</strong>
+          Once the king cannot escape a check, the game stops. The king is never actually taken off the board.
+        </div>
+
+        <h2 id="values">Piece values</h2>
+        <p>
+          These numbers are a rough guide to how much material a piece is worth. They help you decide
+          whether a trade is good.
+        </p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr><th>Piece</th><th>Value</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Pawn</td><td>1</td><td>The unit of measurement. Worth more as it nears promotion.</td></tr>
+              <tr><td>Knight</td><td>3</td><td>Strongest in the centre; loves closed positions.</td></tr>
+              <tr><td>Bishop</td><td>3</td><td>Strong on long open diagonals.</td></tr>
+              <tr><td>Rook</td><td>5</td><td>Powerful on open files and the 7th rank.</td></tr>
+              <tr><td>Queen</td><td>9</td><td>Worth roughly a rook and a bishop.</td></tr>
+              <tr><td>King</td><td>—</td><td>Priceless: the game is over if it is checkmated.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout plain">
+          <strong>The two bishops are worth more than two knights</strong>
+          On an open board, a bishop pair (about 6) cooperates better than two knights (also about 6) because
+          the bishops cover long lines together. Values are a guide, not a law — position matters more.
+        </div>
+      </div>
+
+      <div class="lesson-footer">
+        <a class="next-lesson" href="openings.html">Next lesson: Openings &rarr;</a>
+        <a class="btn btn-ghost btn-sm" href="play.html">Try it on the board</a>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark small" aria-hidden="true">&#9822;</span>
+      <div>
+        <strong>Blue Knight</strong>
+        <span>A pocket guide to chess, free for everyone.</span>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
+      <a href="play.html">Practice board</a>
+    </nav>
+    <p class="footer-copy">&copy; <span data-year>2026</span> Blue Knight &middot; Built with vanilla HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

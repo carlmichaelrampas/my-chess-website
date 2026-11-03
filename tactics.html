@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0806" />
+<meta name="description" content="Learn the core chess tactics: forks, pins, skewers, discovered attacks, double check and back-rank mate, with clear examples." />
+<title>Tactics · Blue Knight</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%232563eb'/%3E%3Ctext x='50' y='76' font-size='68' text-anchor='middle' fill='%23fff' font-family='serif'%3E%E2%99%9E%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body class="site">
+
+<a class="skip-link" href="#lesson">Skip to lesson</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">&#9822;</span>
+      <span>
+        <span class="brand-name">Blue Knight</span>
+        <span class="brand-sub">A pocket guide to chess</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="siteNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html" aria-current="page">Tactics</a>
+      <a href="history.html">History</a>
+    </nav>
+
+    <div class="header-actions">
+      <span data-auth></span>
+      <a class="btn btn-primary btn-sm" href="history.html">Next lesson</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<main class="lesson-main wrap" id="lesson">
+  <div class="lesson-layout">
+
+    <aside class="lesson-nav" aria-label="Lessons">
+      <p class="lesson-nav-title">Lessons</p>
+      <a href="basics.html">Chess basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html" aria-current="page">Tactics</a>
+      <a href="history.html">History</a>
+      <a class="nav-practice" href="play.html">Practice board &rarr;</a>
+    </aside>
+
+    <article class="lesson">
+      <p class="lesson-kicker">Lesson 3 &middot; 8 min read</p>
+      <h1>Tactics: the patterns that win games</h1>
+      <p class="lesson-lead">
+        Most games between improving players are decided by a two- or three-move combination, not by deep
+        strategy. These are the patterns behind almost all of them.
+      </p>
+
+      <div class="lesson-actions">
+        <button class="save-btn" type="button" data-save="tactics">Save to reading list</button>
+      </div>
+
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#scan">How to look for tactics</a></li>
+          <li><a href="#fork">Fork</a></li>
+          <li><a href="#pin">Pin</a></li>
+          <li><a href="#skewer">Skewer</a></li>
+          <li><a href="#discovered">Discovered attack and double check</a></li>
+          <li><a href="#backrank">Back-rank mate</a></li>
+          <li><a href="#quiz">Quick quiz</a></li>
+        </ol>
+      </nav>
+
+      <div class="prose">
+        <h2 id="scan">How to look for tactics</h2>
+        <p>
+          On every move, run the same short checklist: <strong>checks, captures, threats</strong>. First look at
+          every check you can give (yours and your opponent's), then every capture, then every direct threat.
+          Most tactics are hiding in one of those three categories.
+        </p>
+        <div class="callout">
+          <strong>Before you capture, count</strong>
+          Add up the value of the pieces attacking and defending a square. If your capture wins a rook (5) but
+          loses a bishop (3), it was not a good trade — even if it looked aggressive.
+        </div>
+
+        <h2 id="fork">Fork</h2>
+        <p>
+          One piece attacks two targets at once. Knights are the classic forking piece, because their awkward
+          movement is hard to see.
+        </p>
+        <p>
+          <strong>Example.</strong> A white knight on <span class="sq-ref">c7</span> attacks both the black king on
+          <span class="sq-ref">a8</span> and the rook on <span class="sq-ref">e8</span>. Black must answer the check,
+          and the knight takes the rook next move. A knight landing on <span class="sq-ref">c7</span> or
+          <span class="sq-ref">f7</span> is a recurring theme in real games.
+        </p>
+        <p>
+          Forks are not only for knights: a queen can fork a king and a loose piece, and pawn forks (attacking
+          two pieces with a pawn push) are especially sweet because a pawn is worth so little.
+        </p>
+
+        <h2 id="pin">Pin</h2>
+        <p>
+          A pinned piece cannot move without exposing something more valuable behind it. There are two kinds:
+        </p>
+        <ul>
+          <li><strong>Absolute pin</strong> — the king is behind the pinned piece, so moving it would be illegal.</li>
+          <li><strong>Relative pin</strong> — a valuable piece (often the queen) is behind it. Moving is legal, but usually bad.</li>
+        </ul>
+        <p>
+          <strong>Example.</strong> A white bishop on <span class="sq-ref">b5</span> pins the black knight on
+          <span class="sq-ref">c6</span> to the king on <span class="sq-ref">e8</span>. The knight is frozen: it cannot
+          leave the diagonal. This is why <span class="sq-ref">Bb5</span> in the Ruy López is such a natural move —
+          it immediately creates pressure without any risk.
+        </p>
+
+        <h2 id="skewer">Skewer</h2>
+        <p>
+          The mirror image of a pin: you attack a valuable piece <em>in front</em>, and when it moves out of the
+          way you capture the piece behind it.
+        </p>
+        <p>
+          <strong>Example.</strong> A white bishop on <span class="sq-ref">b2</span> checks the black king on
+          <span class="sq-ref">g7</span>, with a black rook sitting on <span class="sq-ref">h8</span> on the same
+          diagonal. The king must step aside, and the bishop takes the rook.
+        </p>
+
+        <h2 id="discovered">Discovered attack and double check</h2>
+        <p>
+          A <strong>discovered attack</strong> happens when moving one piece opens a line for another. If the
+          piece being uncovered gives check, the move is a <strong>discovered check</strong> — and the moving piece
+          is free to grab something valuable, because the check must be answered first.
+        </p>
+        <p>
+          <strong>Example.</strong> A white bishop on <span class="sq-ref">b2</span> is blocked by its own knight on
+          <span class="sq-ref">e5</span>, with the black king on <span class="sq-ref">g7</span>. Moving the knight
+          anywhere exposes the bishop's check on the king.
+        </p>
+        <p>
+          If the moving piece <em>also</em> gives check, that is a <strong>double check</strong> — and it is brutal.
+          You cannot block or capture your way out of two checks at once, so the king must move. From the same
+          setup, jumping the knight to <span class="sq-ref">g6</span> checks the king on
+          <span class="sq-ref">h8</span> while opening the bishop's diagonal at the same time.
+        </p>
+
+        <h2 id="backrank">Back-rank mate</h2>
+        <p>
+          A king that has castled can end up boxed in by its own pawns. If an enemy rook or queen reaches the
+          back rank, the result is often mate.
+        </p>
+        <p>
+          <strong>Example.</strong> The black king is on <span class="sq-ref">g8</span> with pawns on
+          <span class="sq-ref">f7</span>, <span class="sq-ref">g7</span> and <span class="sq-ref">h7</span>. A white
+          rook arriving on <span class="sq-ref">a8</span> gives check along the eighth rank. The king cannot step
+          to <span class="sq-ref">f8</span> or <span class="sq-ref">h8</span> (still on the rank) and cannot move
+          forward (its own pawns are there). That is checkmate.
+        </p>
+        <div class="callout plain">
+          <strong>Prevention</strong>
+          Make <em>luft</em> — a little breathing space for your king. Pushing one of the pawns in front of it,
+          or leaving a rook on the back rank to defend, removes most back-rank tactics at once.
+        </div>
+
+        <h2 id="quiz">Quick quiz</h2>
+        <p>Try to answer before opening each question.</p>
+
+        <details class="quiz">
+          <summary>1. White bishop on b5, black knight on c6, black king on e8. What is happening to the knight?</summary>
+          <p>It is pinned — an absolute pin. Moving the knight would expose the king to the bishop, so it is stuck.</p>
+        </details>
+
+        <details class="quiz">
+          <summary>2. White knight jumps to c7. The black king is on a8 and a rook sits on e8. What is the result?</summary>
+          <p>A fork. The knight checks the king on a8 and attacks the rook on e8; Black saves the king and White wins the rook.</p>
+        </details>
+
+        <details class="quiz">
+          <summary>3. Black has castled short: king on g8, pawns on f7, g7, h7. A white rook lands on a8. Why is this mate?</summary>
+          <p>The rook checks along the eighth rank. The king has no escape square and cannot capture the rook, and none of Black's pieces can block or take it — a classic back-rank mate.</p>
+        </details>
+      </div>
+
+      <div class="lesson-footer">
+        <a class="next-lesson" href="history.html">Next lesson: History &rarr;</a>
+        <a class="btn btn-ghost btn-sm" href="play.html">Practise on the board</a>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark small" aria-hidden="true">&#9822;</span>
+      <div>
+        <strong>Blue Knight</strong>
+        <span>A pocket guide to chess, free for everyone.</span>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="basics.html">Basics</a>
+      <a href="openings.html">Openings</a>
+      <a href="tactics.html">Tactics</a>
+      <a href="history.html">History</a>
+      <a href="play.html">Practice board</a>
+    </nav>
+    <p class="footer-copy">&copy; <span data-year>2026</span> Blue Knight &middot; Built with vanilla HTML, CSS &amp; JavaScript.</p>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
