@@ -828,6 +828,7 @@
       var(--shadow-board);
   }
 
+  .coord{ font-size:calc(var(--sq) * .15); opacity:.55; }
   .sq.light .coord{ color:#5A4634; }
   .sq.dark .coord{ color:#F2E5CF; }
 
@@ -844,6 +845,20 @@
 
   .hint.dot .mark{ background:rgba(45,30,18,.42); box-shadow:0 1px 2px rgba(0,0,0,.25); }
   .hint.ring .mark{ border-color:rgba(45,30,18,.4); }
+
+  .btn-sound svg{ width:16px; height:16px; display:block; }
+  .btn-sound .ic-off{ display:none; }
+  .btn-sound[aria-pressed="false"] .ic-on{ display:none; }
+  .btn-sound[aria-pressed="false"] .ic-off{ display:block; }
+
+  /* player bars stay exactly as wide as the board */
+  .board-area{ width:100%; max-width:min(100%, 66dvh, 620px); justify-self:center; }
+  @media (max-width:980px){
+    .board-area{ max-width:min(100%, 68dvh, 560px); }
+  }
+  @media (max-width:560px){
+    .board-area{ max-width:100%; }
+  }
 
   .board-overlay{ background:rgba(8,5,3,.58); }
   .promo{ background:rgba(8,5,3,.58); }
@@ -1038,7 +1053,10 @@
           <button class="btn primary" id="newGameBtn" type="button">New game</button>
           <button class="btn ghost" id="undoBtn" type="button" disabled>Undo</button>
           <button class="btn ghost" id="flipBtn" type="button">Flip</button>
-          <button class="btn ghost" id="soundBtn" type="button" aria-pressed="true" aria-label="Toggle sound">&#128266;</button>
+          <button class="btn ghost btn-sound" id="soundBtn" type="button" aria-pressed="true" aria-label="Toggle sound">
+            <svg class="ic-on" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9h3.8L12 5.2v13.6L7.3 15H3.5z" fill="currentColor"/><path d="M15.4 8.6a4.8 4.8 0 0 1 0 6.8M18.2 6a8.4 8.4 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="ic-off" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 9h3.8L12 5.2v13.6L7.3 15H3.5z" fill="currentColor"/><path d="M15.6 9.4l5 5.2M20.6 9.4l-5 5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
         </div>
       </section>
 
@@ -1697,7 +1715,6 @@ function gameStatus(s, repetitionCount){
   }
 
   function refreshSoundButton(){
-    soundBtn.textContent = soundOn ? '\uD83D\uDD0A' : '\uD83D\uDD07';
     soundBtn.setAttribute('aria-pressed', String(soundOn));
     soundBtn.setAttribute('aria-label', soundOn ? 'Mute sound' : 'Unmute sound');
   }

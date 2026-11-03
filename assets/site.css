@@ -131,8 +131,11 @@ img,svg{ max-width:100%; }
   gap:12px;
   text-decoration:none;
   color:inherit;
-  flex:0 0 auto;
+  flex:0 1 auto;
+  min-width:0;
 }
+
+.brand > span:last-child{ min-width:0; }
 
 .brand-mark{
   width:42px;
@@ -159,6 +162,9 @@ img,svg{ max-width:100%; }
   letter-spacing:.01em;
   line-height:1.1;
   color:var(--cream);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .brand-sub{
@@ -210,6 +216,7 @@ img,svg{ max-width:100%; }
   align-items:center;
   gap:10px;
   margin-left:8px;
+  flex:0 0 auto;
 }
 
 .nav-toggle{
@@ -377,15 +384,18 @@ img,svg{ max-width:100%; }
   font-family:var(--font-display);
   font-weight:500;
   font-size:clamp(2.55rem, 5vw, 4.15rem);
-  line-height:1.02;
-  letter-spacing:-.022em;
+  line-height:1.07;
+  letter-spacing:-.012em;
   color:var(--cream);
+  overflow-wrap:break-word;
 }
 
 .hero h1 em{
   display:block;
   font-style:italic;
   font-weight:500;
+  line-height:1.14;
+  padding-bottom:.06em;
   background:linear-gradient(100deg,#F5DFB8 0%,#D9A85C 45%,#B27A38 100%);
   -webkit-background-clip:text;
   background-clip:text;
@@ -470,6 +480,7 @@ img,svg{ max-width:100%; }
   position:relative;
   width:min(100%, 424px);
   z-index:1;
+  margin-bottom:34px;
 }
 
 .board-card{
@@ -523,8 +534,8 @@ img,svg{ max-width:100%; }
   height:12.5%;
   display:grid;
   place-items:center;
-  font-size:36px;
-  font-size:10.8cqw;
+  font-size:34px;
+  font-size:9.8cqw;
   line-height:1;
   font-family:"Segoe UI Symbol","Noto Sans Symbols 2","Apple Symbols","DejaVu Sans",sans-serif;
 }
@@ -541,8 +552,8 @@ img,svg{ max-width:100%; }
 
 .mock-card{
   position:absolute;
-  right:-16px;
-  bottom:-20px;
+  right:-14px;
+  bottom:0;
   z-index:2;
   display:flex;
   align-items:center;
@@ -554,7 +565,7 @@ img,svg{ max-width:100%; }
   backdrop-filter:blur(10px);
   border:1px solid var(--line-strong);
   box-shadow:var(--shadow-md);
-  transform:rotate(2deg);
+  transform:rotate(2deg) translateY(calc(100% - 8px));
 }
 
 .mock-badge{
@@ -570,7 +581,7 @@ img,svg{ max-width:100%; }
   border:1px solid rgba(240,214,166,.24);
 }
 
-.mock-card-text{ display:flex; flex-direction:column; line-height:1.3; }
+.mock-card-text{ display:flex; flex-direction:column; gap:3px; line-height:1.3; }
 .mock-card-text strong{ font-size:.76rem; color:var(--cream); letter-spacing:.01em; }
 .mock-card-text span{ font-size:.66rem; color:var(--muted); }
 
@@ -591,9 +602,15 @@ img,svg{ max-width:100%; }
 .marquee-track{
   display:flex;
   align-items:center;
-  gap:38px;
   width:max-content;
   animation:marquee 34s linear infinite;
+}
+
+.marquee-group{
+  display:flex;
+  align-items:center;
+  gap:38px;
+  padding-right:38px;
 }
 
 .marquee span{
@@ -619,8 +636,8 @@ img,svg{ max-width:100%; }
   font-family:var(--font-display);
   font-weight:500;
   font-size:clamp(1.75rem, 3vw, 2.5rem);
-  letter-spacing:-.02em;
-  line-height:1.1;
+  letter-spacing:-.012em;
+  line-height:1.16;
   color:var(--cream);
 }
 
@@ -744,7 +761,8 @@ img,svg{ max-width:100%; }
   font-family:var(--font-display);
   font-weight:600;
   font-size:1.22rem;
-  letter-spacing:.002em;
+  letter-spacing:0;
+  line-height:1.25;
   color:var(--cream);
 }
 
@@ -1020,9 +1038,10 @@ img,svg{ max-width:100%; }
   font-family:var(--font-display);
   font-weight:500;
   font-size:clamp(2rem, 3.8vw, 3rem);
-  line-height:1.04;
-  letter-spacing:-.028em;
+  line-height:1.09;
+  letter-spacing:-.016em;
   color:var(--cream);
+  overflow-wrap:break-word;
 }
 
 .lesson-lead{
@@ -1090,7 +1109,8 @@ img,svg{ max-width:100%; }
   font-family:var(--font-display);
   font-weight:500;
   font-size:1.62rem;
-  letter-spacing:-.02em;
+  letter-spacing:-.012em;
+  line-height:1.22;
   color:var(--cream);
   scroll-margin-top:100px;
 }
@@ -1505,6 +1525,8 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
 
 .control input::placeholder{ color:rgba(240,226,204,.24); }
 
+.control.has-toggle input{ padding-right:68px; }
+
 .control input:-webkit-autofill,
 .control input:-webkit-autofill:hover,
 .control input:-webkit-autofill:focus{
@@ -1695,7 +1717,7 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
   }
   .hero-art{ order:2; }
   .board-stage{ width:min(100%, 370px); }
-  .mock-card{ right:0; bottom:-16px; }
+  .mock-card{ right:0; }
 
   .section{ padding-top:60px; }
 
@@ -1722,7 +1744,7 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
   .cta-band{ padding:34px 28px; margin-top:68px; }
 }
 
-@media (max-width:860px){
+@media (max-width:1024px){
   .nav{
     position:absolute;
     top:100%;
@@ -1741,10 +1763,14 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
   .nav.open{ display:flex; }
   .nav a{ padding:12px 14px; }
   .nav-toggle{ display:inline-flex; }
-  .header-inner{ position:relative; min-height:66px; }
+  .header-inner{ position:relative; min-height:70px; }
   .header-actions{ margin-left:auto; }
+}
+
+@media (max-width:860px){
   .brand-sub{ display:none; }
   .auth-name{ max-width:92px; }
+  .auth-visual .visual-mark{ font-size:150px; right:-14px; bottom:-56px; color:rgba(240,226,204,.038); }
 }
 
 @media (max-width:560px){
@@ -1753,13 +1779,20 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
   .brand-mark{ width:38px; height:38px; border-radius:11px; font-size:21px; }
   .brand-name{ font-size:1rem; }
 
+  .header-actions .btn-primary{ display:none; }
+  .auth-name{ display:none; }
+  .auth-avatar{ width:26px; height:26px; font-size:.64rem; }
+  .auth-logout{ font-size:.66rem; padding:5px 8px; }
+  .nav-toggle{ width:38px; height:38px; }
+  .brand-name{ max-width:52vw; }
+
   .hero{ padding-top:40px; padding-bottom:52px; gap:40px; }
   .hero-actions .btn{ flex:1 1 100%; }
   .hero-stats{ gap:22px; }
 
   .board-stage{ width:100%; max-width:330px; }
-  .mock-piece{ font-size:30px; font-size:10.8cqw; }
-  .mock-card{ left:0; right:auto; bottom:-14px; padding:9px 12px; }
+  .mock-piece{ font-size:28px; font-size:9.8cqw; }
+  .mock-card{ left:0; right:auto; padding:9px 12px; max-width:calc(100% - 8px); }
   .mock-card-text span{ font-size:.62rem; }
 
   .section{ padding-top:48px; }
@@ -1779,6 +1812,15 @@ details.quiz p{ margin:12px 0 2px 20px; font-size:.87rem; color:var(--muted); li
   .auth-form-wrap{ padding:24px 20px 26px; }
   .auth-visual{ padding:24px 22px; }
   .auth-visual h2{ font-size:1.45rem; }
+  .auth-visual .visual-mark{ font-size:120px; right:-12px; bottom:-52px; color:rgba(240,226,204,.032); }
+
+  /* move lists wrap instead of running off the card */
+  .opening .line{ white-space:pre-wrap; overflow-wrap:anywhere; }
+
+  /* keep the champion tables readable without a sideways swipe */
+  table.data{ font-size:.78rem; }
+  table.data th, table.data td{ padding:9px 10px; }
+  table.data th{ letter-spacing:.09em; }
 
   .auth-link .label-long{ display:none; }
 }
